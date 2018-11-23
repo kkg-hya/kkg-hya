@@ -7,6 +7,6 @@ Object.keys(invariants).forEach(key => {
   generatorsMap[key] = setGenerator(invariants[key]);
 });
 
-export default function reachDescription(descrition) {
+export default function reachDescription(descrition = '') {
   return parseES6Template(descrition, generatorsMap)
 }
