@@ -1,0 +1,31 @@
+.score-modal {
+  color: #fff;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14rem;
+  text-align: center;
+  transform: translateX(+110%);
+  transition: transform 0.5s ease-in;
+
+  &--animate-in {
+    transform: translateX(0%);
+  }
+
+  &--animate-out {
+    transform: translateX(-110%);
+  }
+
+  &--team-a {
+    background: #9f86ff;
+  }
+
+  &--team-b {
+    background: #e64759;
+  }
+}

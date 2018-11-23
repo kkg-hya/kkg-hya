@@ -1,0 +1,27 @@
+body {
+  font-family: sans-serif;
+  margin: 0px;
+  font-size: 20px;
+}
+
+button {
+  background: transparent;
+  border: none;
+  font-size: inherit;
+  outline: none;
+}
+
+.app {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app--dark {
+  background: #252830;
+  color: #fff;
+}
+
+body.dark {
+  background: #252830;
+}

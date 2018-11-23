@@ -1,0 +1,27 @@
+.score {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: #fff;
+  text-align: center;
+
+  &__team-a,
+  &__team-b {
+    padding: 1rem;
+  }
+
+  &__team-a {
+    background: #9f86ff;
+
+    &--active {
+      box-shadow: -14px 4px 60px 10px #9f86ff;
+    }
+  }
+
+  &__team-b {
+    background: #e64759;
+
+    &--active {
+      box-shadow: 14px 4px 60px 10px #e64759;
+    }
+  }
+}
