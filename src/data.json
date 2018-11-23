@@ -1,15 +1,131 @@
 {
-  "tasks": [
-  ],
   "questions": [
     {
       "title": "Солнце светит негры пашут",
-      "description": "Получите очко если сейчас темное время суток, а в вашей команде у всех темные волосы (не рыжие и не блондины), для светлого времени суток наоборот",
-      "forMe": 1,
-      "forEnemy": 0,
-      "forRandom": 0,
-      "isForComand": 0,
-      "pic": "https://ukranews.com/uploads/news/2013/12/05/17/7b4ebab118c661c62bc395cf784ca9f53b5bf158.jpg"
+      "description": "Получите очко если сейчас темное время суток, а в вашей команде у всех темные волосы (не рыжие и не блондины),  для светлого времени суток наоборот",
+      "forMe": true,
+      "forEnemy": false,
+      "forRandom": false,
+      "isForComand": false,
+      "pic": 0
+    },
+    {
+      "title": "Зуб за зуб",
+      "description": "если на прошлом ходу команда противника получила очко,  ваша получает очко",
+      "forMe": true,
+      "forEnemy": false,
+      "forRandom": false,
+      "isForComand": false,
+      "pic": 0
+    },
+    {
+      "title": "Залепи себе пукан",
+      "description": "Если под ведущим есть стул и под ним жевачка то соперник  получает очко",
+      "forMe": false,
+      "forEnemy": true,
+      "forRandom": false,
+      "isForComand": false,
+      "pic": 0
+    },
+    {
+      "title": 0,
+      "description": "Если в комнате ${thing} ${color} цвета то получите очко",
+      "forMe": true,
+      "forEnemy": false,
+      "forRandom": false,
+      "isForComand": false,
+      "pic": 0
+    },
+    {
+      "title": 0,
+      "description": "Если у соперников ${wear} ${color} цвета то вы получаете в очко",
+      "forMe": true,
+      "forEnemy": false,
+      "forRandom": false,
+      "isForComand": false,
+      "pic": 0
+    },
+    {
+      "title": "Нет, не ты",
+      "description": "Если в вашей команде есть люди с одинаковыми именами - получи бал",
+      "forMe": true,
+      "forEnemy": false,
+      "forRandom": false,
+      "isForComand": false,
+      "pic": 0
+    },
+    {
+      "title": "Молодое поколение выбирает",
+      "description": "Если в вашей команде есть тот самый батька получите +30 очков",
+      "forMe": true,
+      "forEnemy": false,
+      "forRandom": false,
+      "isForComand": false,
+      "pic": 0
+    },
+    {
+      "title": "Ты НИКАКОЙ как все",
+      "description": "Ваша команда получает бал если хотябы один член команды на логове имеет ${hair}",
+      "forMe": true,
+      "forEnemy": false,
+      "forRandom": false,
+      "isForComand": false,
+      "pic": 0
+    },
+    {
+      "title": "50 оттенков серого",
+      "description": "Получите бал если у кого-то из команды носки разного цвета",
+      "forMe": true,
+      "forEnemy": false,
+      "forRandom": false,
+      "isForComand": false,
+      "pic": 0
+    },
+    {
+      "title": "Apple для пидоров",
+      "description": "В Очко получает команда у которой больше техники марки ${tech}",
+      "forMe": false,
+      "forEnemy": false,
+      "forRandom": false,
+      "isForComand": true,
+      "pic": 0
+    },
+    {
+      "title": "\"превед медвед\"",
+      "description": "Очко получает команда со самым старым игроком",
+      "forMe": false,
+      "forEnemy": false,
+      "forRandom": false,
+      "isForComand": true,
+      "pic": 0
+    },
+    {
+      "title": "Новая школа",
+      "description": "очко команде с самым младшим игроком",
+      "forMe": false,
+      "forEnemy": false,
+      "forRandom": false,
+      "isForComand": true,
+      "pic": 0
+    },
+    {
+      "title": 0,
+      "description": "У кого больше техники ${tech} получает очко",
+      "forMe": false,
+      "forEnemy": false,
+      "forRandom": false,
+      "isForComand": true,
+      "pic": 0
+    },
+    {
+      "title": "Деньги не проблема",
+      "description": "Запустите самолётик из купюры",
+      "forMe": true,
+      "forEnemy": false,
+      "forRandom": false,
+      "isForComand": false,
+      "pic": 0
     }
-  ]
+  ],
+  "tasks": []
 }

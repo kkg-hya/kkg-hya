@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import Score from "./components/Score/Score";
 import Card from "./components/Card/Card";
 import ScoreModal from "./components/ScoreModal/ScoreModal";
+import reachDescription from './generator/decriptionGenerator';
+
 import { debounce } from "lodash";
 import { tasks, questions } from './mock';
 
@@ -32,6 +34,7 @@ class App extends React.PureComponent {
     });
   }, 800);
 
+
   render() {
     const {
       isIn,
@@ -55,7 +58,7 @@ class App extends React.PureComponent {
         <Score scoreA={scoreA} scoreB={scoreB} isTeamA={isTeamA} />
         <Card
           title={title}
-          description={description}
+          description={reachDescription(description)}
           pic={pic}
           showResult={this.showResult}
         />
