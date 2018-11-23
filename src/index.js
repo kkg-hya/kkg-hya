@@ -4,6 +4,7 @@ import Score from "./components/Score/Score";
 import Card from "./components/Card/Card";
 import ScoreModal from "./components/ScoreModal/ScoreModal";
 import { debounce } from "lodash";
+import { tasks, questions } from './mock';
 
 import "./styles.css";
 
@@ -11,15 +12,15 @@ class App extends React.PureComponent {
   state = {
     isIn: false,
     isOut: false,
-    questions: [],
+    questions,
     indexQuestion: 0,
-    tasks: [],
+    tasks,
     indexTask: 0,
     scoreA: 0,
     scoreB: 0,
     isTask: false,
     isTeamA: true,
-    isTeamAGetScore: true
+    isTeamAGetScore: true,
   };
 
   showResult = debounce(isFirstButton => {
@@ -43,7 +44,7 @@ class App extends React.PureComponent {
       scoreB,
       isTask,
       isTeamA,
-      isTeamAGetScore
+      isTeamAGetScore,
     } = this.state;
 
     const card = (isTask ? tasks[indexTask] : questions[indexQuestion]) || {};
