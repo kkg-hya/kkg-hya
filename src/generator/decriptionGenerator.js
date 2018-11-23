@@ -1,4 +1,4 @@
-import invariants from "./invariants.json"
+import { invariants } from "./../data.json"
 import { setGenerator } from './core';
 import parseES6Template from './es6-template-parser';
 
