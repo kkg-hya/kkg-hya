@@ -7,7 +7,7 @@
   "dependencies": {
     "classnames": "2.2.6",
     "lodash": "4.17.11",
-    "node-sass": "^4.10.0",
+    "node-sass": "^4.11.0",
     "react": "16.5.2",
     "react-dom": "16.5.2",
     "react-redux": "latest",
@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "data": "npx https://gist.github.com/Akiyamka/cb58b704ee1d162a67ac7a08e5027b19"
   },
   "browserslist": [
     ">0.2%",

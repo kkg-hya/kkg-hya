@@ -16,7 +16,7 @@
       "forEnemy": false,
       "forRandom": false,
       "isForComand": false,
-      "pic": 0
+      "pic": "http://www.top4man.ru/upload/iblock/2a9/jpg1.jpg"
     },
     {
       "title": "Залепи себе пукан",
@@ -52,7 +52,7 @@
       "forEnemy": false,
       "forRandom": false,
       "isForComand": false,
-      "pic": 0
+      "pic": "https://avatars.mds.yandex.net/get-pdb/472427/be0a346e-80e2-4def-a5b8-7034be8f65ee/orig"
     },
     {
       "title": "Молодое поколение выбирает",
@@ -97,7 +97,7 @@
       "forEnemy": false,
       "forRandom": false,
       "isForComand": true,
-      "pic": 0
+      "pic": "https://cs6.pikabu.ru/post_img/2014/03/05/8/1394020205_978390875.gif"
     },
     {
       "title": "Новая школа",
@@ -124,15 +124,35 @@
       "forEnemy": false,
       "forRandom": false,
       "isForComand": false,
-      "pic": 0
+      "pic": "https://media.altpress.com/uploads/2018/06/make_money_gif.gif"
     }
   ],
   "tasks": [],
   "invariants": {
-    "wear": ["трусы", "носки", "майка"],
-    "color": ["красный", "розовый", "поносный"],
-    "tech": ["Apple", "Xiaomi"],
-    "hair": ["дреды", "лысый", "ирокез"],
-    "thing": ["обои", "ботинки", "люстра"]
+    "wear": [
+      "трусы",
+      "носки",
+      "майка"
+    ],
+    "color": [
+      "красный",
+      "розовый",
+      "поносный"
+    ],
+    "tech": [
+      "Apple",
+      "Xiaomi",
+      0
+    ],
+    "hair": [
+      "дреды",
+      "лысый",
+      "ирокез"
+    ],
+    "thing": [
+      "обои",
+      "ботинки",
+      "люстра"
+    ]
   }
 }
