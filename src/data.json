@@ -7,7 +7,7 @@
       "forEnemy": false,
       "forRandom": false,
       "isForComand": false,
-      "pic": 0
+      "pic": "https://reactionimage.org/img/gallery/1485182606.gif"
     },
     {
       "title": "Зуб за зуб",
@@ -39,7 +39,7 @@
     {
       "title": 0,
       "description": "Если у соперников ${wear} ${color} цвета то вы получаете в очко",
-      "forMe": true,
+      "forMe": false,
       "forEnemy": false,
       "forRandom": false,
       "isForComand": false,
@@ -116,7 +116,9 @@
       "forRandom": false,
       "isForComand": true,
       "pic": 0
-    },
+    }
+  ],
+  "tasks": [
     {
       "title": "Деньги не проблема",
       "description": "Запустите самолётик из купюры",
@@ -127,7 +129,6 @@
       "pic": "https://media.altpress.com/uploads/2018/06/make_money_gif.gif"
     }
   ],
-  "tasks": [],
   "invariants": {
     "wear": [
       "трусы",
