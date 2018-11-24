@@ -114,6 +114,8 @@ class App extends React.PureComponent {
           isFirstButton ? this.addPointToMe(cb) : this.addPointToEnemy(cb);
         });
         break;
+      default:
+        return null
     }
     if (scoreA >= gameScore || scoreB >= gameScore) {
       this.endGame();

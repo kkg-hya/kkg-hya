@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as THREE from "three";
 import CANNON from "cannon";
 import {$t, teal} from './teal';
@@ -11,7 +12,7 @@ export default (function(dice) {
     function prepare_rnd(callback) {
         if (!random_storage.length && $t.dice.use_true_random) {
             try {
-                $t.rpc({ method: "random", n: 512 }, 
+                $t.rpc({ method: "random", n: 512 },
                 function(random_responce) {
                     if (!random_responce.error)
                         random_storage = random_responce.result.random.data;
@@ -31,11 +32,11 @@ export default (function(dice) {
 
     function create_shape(vertices, faces, radius) {
         var cv = new Array(vertices.length), cf = new Array(faces.length);
-        for (var i = 0; i < vertices.length; ++i) {
+        for (let i = 0; i < vertices.length; ++i) {
             var v = vertices[i];
             cv[i] = new CANNON.Vec3(v.x * radius, v.y * radius, v.z * radius);
         }
-        for (var i = 0; i < faces.length; ++i) {
+        for (let i = 0; i < faces.length; ++i) {
             cf[i] = faces[i].slice(0, faces[i].length - 1);
         }
         return new CANNON.ConvexPolyhedron(cv, cf);
@@ -43,12 +44,12 @@ export default (function(dice) {
 
     function make_geom(vertices, faces, radius, tab, af) {
         var geom = new THREE.Geometry();
-        for (var i = 0; i < vertices.length; ++i) {
+        for (let i = 0; i < vertices.length; ++i) {
             var vertex = vertices[i].multiplyScalar(radius);
             vertex.index = geom.vertices.push(vertex) - 1;
         }
-        for (var i = 0; i < faces.length; ++i) {
-            var ii = faces[i], fl = ii.length - 1;
+        for (let i = 0; i < faces.length; ++i) {
+            let ii = faces[i], fl = ii.length - 1;
             var aa = Math.PI * 2 / fl;
             for (var j = 0; j < fl - 2; ++j) {
                 geom.faces.push(new THREE.Face3(ii[0], ii[j + 1], ii[j + 2], [geom.vertices[ii[0]],
@@ -69,9 +70,9 @@ export default (function(dice) {
 
     function chamfer_geom(vectors, faces, chamfer) {
         var chamfer_vectors = [], chamfer_faces = [], corner_faces = new Array(vectors.length);
-        for (var i = 0; i < vectors.length; ++i) corner_faces[i] = [];
-        for (var i = 0; i < faces.length; ++i) {
-            var ii = faces[i], fl = ii.length - 1;
+        for (let i = 0; i < vectors.length; ++i) corner_faces[i] = [];
+        for (let i = 0; i < faces.length; ++i) {
+            let ii = faces[i], fl = ii.length - 1;
             var center_point = new THREE.Vector3();
             var face = new Array(fl);
             for (var j = 0; j < fl; ++j) {
@@ -87,31 +88,31 @@ export default (function(dice) {
             face.push(ii[fl]);
             chamfer_faces.push(face);
         }
-        for (var i = 0; i < faces.length - 1; ++i) {
+        for (let i = 0; i < faces.length - 1; ++i) {
             for (var j = i + 1; j < faces.length; ++j) {
                 var pairs = [], lastm = -1;
                 for (var m = 0; m < faces[i].length - 1; ++m) {
                     var n = faces[j].indexOf(faces[i][m]);
                     if (n >= 0 && n < faces[j].length - 1) {
-                        if (lastm >= 0 && m != lastm + 1) pairs.unshift([i, m], [j, n]);
+                        if (lastm >= 0 && m !==  lastm + 1) pairs.unshift([i, m], [j, n]);
                         else pairs.push([i, m], [j, n]);
                         lastm = m;
                     }
                 }
-                if (pairs.length != 4) continue;
+                if (pairs.length !==  4) continue;
                 chamfer_faces.push([chamfer_faces[pairs[0][0]][pairs[0][1]],
                         chamfer_faces[pairs[1][0]][pairs[1][1]],
                         chamfer_faces[pairs[3][0]][pairs[3][1]],
                         chamfer_faces[pairs[2][0]][pairs[2][1]], -1]);
             }
         }
-        for (var i = 0; i < corner_faces.length; ++i) {
+        for (let i = 0; i < corner_faces.length; ++i) {
             var cf = corner_faces[i], face = [cf[0]], count = cf.length - 1;
             while (count) {
                 for (var m = faces.length; m < chamfer_faces.length; ++m) {
-                    var index = chamfer_faces[m].indexOf(face[face.length - 1]);
+                    let index = chamfer_faces[m].indexOf(face[face.length - 1]);
                     if (index >= 0 && index < 4) {
-                        if (--index == -1) index = 3;
+                        if (--index === -1) index = 3;
                         var next_vertex = chamfer_faces[m][index];
                         if (cf.indexOf(next_vertex) >= 0) {
                             face.push(next_vertex);
@@ -129,7 +130,7 @@ export default (function(dice) {
 
     function create_geom(vertices, faces, radius, tab, af, chamfer) {
         var vectors = new Array(vertices.length);
-        for (var i = 0; i < vertices.length; ++i) {
+        for (let i = 0; i < vertices.length; ++i) {
             vectors[i] = (new THREE.Vector3).fromArray(vertices[i]).normalize();
         }
         var cg = chamfer_geom(vectors, faces, chamfer);
@@ -150,7 +151,7 @@ export default (function(dice) {
 
     this.create_dice_materials = function(face_labels, size, margin) {
         function create_text_texture(text, color, back_color) {
-            if (text == undefined) return null;
+            if (text === undefined) return null;
             var canvas = document.createElement("canvas");
             var context = canvas.getContext("2d");
             var ts = calc_texture_size(size + size * 2 * margin) * 2;
@@ -162,7 +163,7 @@ export default (function(dice) {
             context.textBaseline = "middle";
             context.fillStyle = color;
             context.fillText(text, canvas.width / 2, canvas.height / 2);
-            if (text == '6' || text == '9') {
+            if (text === '6' || text === '9') {
                 context.fillText('  .', canvas.width / 2, canvas.height / 2);
             }
             var texture = new THREE.Texture(canvas);
@@ -170,7 +171,7 @@ export default (function(dice) {
             return texture;
         }
         var materials = [];
-        for (var i = 0; i < face_labels.length; ++i)
+        for (let i = 0; i < face_labels.length; ++i)
             materials.push(new THREE.MeshPhongMaterial($t.copyto(this.material_options,
                         { map: create_text_texture(face_labels[i], this.label_color, this.dice_color) })));
         return materials;
@@ -188,7 +189,7 @@ export default (function(dice) {
             context.textAlign = "center";
             context.textBaseline = "middle";
             context.fillStyle = color;
-            for (var i in text) {
+            for (let i in text) {
                 context.fillText(text[i], canvas.width / 2,
                         canvas.height / 2 - ts * 0.3);
                 context.translate(canvas.width / 2, canvas.height / 2);
@@ -201,7 +202,7 @@ export default (function(dice) {
         }
         var materials = [];
         var labels = [[], [0, 0, 0], [2, 4, 3], [1, 3, 4], [2, 1, 4], [1, 2, 3]];
-        for (var i = 0; i < labels.length; ++i)
+        for (let i = 0; i < labels.length; ++i)
             materials.push(new THREE.MeshPhongMaterial($t.copyto(this.material_options,
                         { map: create_d4_text(labels[i], this.label_color, this.dice_color) })));
         return materials;
@@ -231,7 +232,7 @@ export default (function(dice) {
     this.create_d10_geometry = function(radius) {
         var a = Math.PI * 2 / 10, k = Math.cos(a), h = 0.105, v = -1;
         var vertices = [];
-        for (var i = 0, b = 0; i < 10; ++i, b += a)
+        for (let i = 0, b = 0; i < 10; ++i, b += a)
             vertices.push([Math.cos(b), Math.sin(b), h * (i % 2 ? 1 : -1)]);
         vertices.push([0, 0, -1]); vertices.push([0, 0, 1]);
         var faces = [[5, 7, 11, 0], [4, 2, 10, 1], [1, 3, 11, 2], [0, 8, 10, 3], [7, 9, 11, 4],
@@ -279,7 +280,7 @@ export default (function(dice) {
     this.desk_color = 0xdfdfdf;
 
     this.known_types = ['d6'];
-    this.dice_face_range = { 'd4': [1, 4], 'd6': [1, 6], 'd8': [1, 8], 'd10': [0, 9], 
+    this.dice_face_range = { 'd4': [1, 4], 'd6': [1, 6], 'd8': [1, 8], 'd10': [0, 9],
         'd12': [1, 12], 'd20': [1, 20], 'd100': [0, 9] };
     this.dice_mass = { 'd4': 300, 'd6': 300, 'd8': 340, 'd10': 350, 'd12': 350, 'd20': 400, 'd100': 350 };
     this.dice_inertia = { 'd4': 5, 'd6': 13, 'd8': 10, 'd10': 9, 'd12': 8, 'd20': 6, 'd100': 9 };
@@ -342,11 +343,11 @@ export default (function(dice) {
         var ret = { set: [], constant: 0, result: [], error: false }, res;
         while (res = dr0.exec(no[0])) {
             var command = res[2];
-            if (command != 'd') { ret.error = true; continue; }
+            if (command !==  'd') { ret.error = true; continue; }
             var count = parseInt(res[1]);
-            if (res[1] == '') count = 1;
+            if (res[1] === '') count = 1;
             var type = 'd' + res[3];
-            if (this.known_types.indexOf(type) == -1) { ret.error = true; continue; }
+            if (this.known_types.indexOf(type) === -1) { ret.error = true; continue; }
             while (count--) ret.set.push(type);
             if (res[5]) ret.constant += parseInt(res[5]);
         }
@@ -358,9 +359,9 @@ export default (function(dice) {
 
     this.stringify_notation = function(nn) {
         var dict = {}, notation = '';
-        for (var i in nn.set) 
+        for (let i in nn.set)
             if (!dict[nn.set[i]]) dict[nn.set[i]] = 1; else ++dict[nn.set[i]];
-        for (var i in dict) {
+        for (let i in dict) {
             if (notation.length) notation += ' + ';
             notation += (dict[i] > 1 ? dict[i] : '') + i;
         }
@@ -471,7 +472,7 @@ export default (function(dice) {
         this.scene.add(this.light);
 
         if (this.desk) this.scene.remove(this.desk);
-        this.desk = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 2, this.h * 2, 1, 1), 
+        this.desk = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 2, this.h * 2, 1, 1),
                 new THREE.MeshPhongMaterial({ color: that.desk_color }));
         this.desk.receiveShadow = true;
         this.scene.add(this.desk);
@@ -485,14 +486,14 @@ export default (function(dice) {
             x: vector.x * Math.cos(random_angle) - vector.y * Math.sin(random_angle),
             y: vector.x * Math.sin(random_angle) + vector.y * Math.cos(random_angle)
         };
-        if (vec.x == 0) vec.x = 0.01;
-        if (vec.y == 0) vec.y = 0.01;
+        if (vec.x === 0) vec.x = 0.01;
+        if (vec.y === 0) vec.y = 0.01;
         return vec;
     }
 
     this.dice_box.prototype.generate_vectors = function(notation, vector, boost) {
         var vectors = [];
-        for (var i in notation.set) {
+        for (let i in notation.set) {
             var vec = make_random_vector(vector);
             var pos = {
                 x: this.w * (vec.x > 0 ? -1 : 1) * 0.9,
@@ -503,7 +504,7 @@ export default (function(dice) {
             if (projector > 1.0) pos.y /= projector; else pos.x *= projector;
             var velvec = make_random_vector(vector);
             var velocity = { x: velvec.x * boost, y: velvec.y * boost, z: -10 };
-            var inertia = that.dice_inertia[notation.set[i]];
+            let inertia = that.dice_inertia[notation.set[i]];
             var angle = {
                 x: -(rnd() * vec.y * 5 + inertia * vec.y),
                 y: rnd() * vec.x * 5 + inertia * vec.x,
@@ -536,7 +537,7 @@ export default (function(dice) {
         var res = true;
         var e = 6;
         if (this.iteration < 10 / that.frame_rate) {
-            for (var i = 0; i < this.dices.length; ++i) {
+            for (let i = 0; i < this.dices.length; ++i) {
                 var dice = this.dices[i];
                 if (dice.dice_stopped === true) continue;
                 var a = dice.body.angularVelocity, v = dice.body.velocity;
@@ -561,11 +562,11 @@ export default (function(dice) {
     }
 
     function get_dice_value(dice) {
-        var vector = new THREE.Vector3(0, 0, dice.dice_type == 'd4' ? -1 : 1);
+        var vector = new THREE.Vector3(0, 0, dice.dice_type === 'd4' ? -1 : 1);
         var closest_face, closest_angle = Math.PI * 2;
-        for (var i = 0, l = dice.geometry.faces.length; i < l; ++i) {
+        for (let i = 0, l = dice.geometry.faces.length; i < l; ++i) {
             var face = dice.geometry.faces[i];
-            if (face.materialIndex == 0) continue;
+            if (face.materialIndex === 0) continue;
             var angle = face.normal.clone().applyQuaternion(dice.body.quaternion).angleTo(vector);
             if (angle < closest_angle) {
                 closest_angle = angle;
@@ -573,13 +574,13 @@ export default (function(dice) {
             }
         }
         var matindex = closest_face.materialIndex - 1;
-        if (dice.dice_type == 'd100') matindex *= 10;
+        if (dice.dice_type === 'd100') matindex *= 10;
         return matindex;
     }
 
     function get_dice_values(dices) {
         var values = [];
-        for (var i = 0, l = dices.length; i < l; ++i) {
+        for (let i = 0, l = dices.length; i < l; ++i) {
             values.push(get_dice_value(dices[i]));
         }
         return values;
@@ -608,20 +609,20 @@ export default (function(dice) {
         else {
             this.world.step(that.frame_rate);
         }
-        for (var i in this.scene.children) {
-            var interact = this.scene.children[i];
-            if (interact.body != undefined) {
+        for (let i in this.scene.children) {
+            let interact = this.scene.children[i];
+            if (interact.body !==  undefined) {
                 interact.position.copy(interact.body.position);
                 interact.quaternion.copy(interact.body.quaternion);
             }
         }
         this.renderer.render(this.scene, this.camera);
         this.last_time = this.last_time ? time : (new Date()).getTime();
-        if (this.running == threadid && this.check_if_throw_finished()) {
+        if (this.running === threadid && this.check_if_throw_finished()) {
             this.running = false;
             if (this.callback) this.callback.call(this, get_dice_values(this.dices));
         }
-        if (this.running == threadid) {
+        if (this.running === threadid) {
             (function(t, tid, uat) {
                 if (!uat && time_diff < that.frame_rate) {
                     setTimeout(function() { requestAnimationFrame(function() { t.__animate(tid); }); },
@@ -636,7 +637,7 @@ export default (function(dice) {
         this.running = false;
         var dice;
         while (dice = this.dices.pop()) {
-            this.scene.remove(dice); 
+            this.scene.remove(dice);
             if (dice.body) this.world.remove(dice.body);
         }
         if (this.pane) this.scene.remove(this.pane);
@@ -648,7 +649,7 @@ export default (function(dice) {
     this.dice_box.prototype.prepare_dices_for_roll = function(vectors) {
         this.clear();
         this.iteration = 0;
-        for (var i in vectors) {
+        for (let i in vectors) {
             this.create_dice(vectors[i].set, vectors[i].pos, vectors[i].velocity,
                     vectors[i].angle, vectors[i].axis);
         }
@@ -659,9 +660,9 @@ export default (function(dice) {
         if (!(value >= r[0] && value <= r[1])) return;
         var num = value - res;
         var geom = dice.geometry.clone();
-        for (var i = 0, l = geom.faces.length; i < l; ++i) {
+        for (let i = 0, l = geom.faces.length; i < l; ++i) {
             var matindex = geom.faces[i].materialIndex;
-            if (matindex == 0) continue;
+            if (matindex === 0) continue;
             matindex += num - 1;
             while (matindex > r[1]) matindex -= r[1];
             while (matindex < r[0]) matindex += r[1];
@@ -672,11 +673,11 @@ export default (function(dice) {
 
     this.dice_box.prototype.roll = function(vectors, values, callback) {
         this.prepare_dices_for_roll(vectors);
-        if (values != undefined && values.length) {
+        if (values !==  undefined && values.length) {
             this.use_adapvite_timestep = false;
             var res = this.emulate_throw();
             this.prepare_dices_for_roll(vectors);
-            for (var i in res)
+            for (let i in res)
                 shift_dice_faces(this.dices[i], values[i], res[i]);
         }
         this.callback = callback;
@@ -691,14 +692,14 @@ export default (function(dice) {
         if (time_diff > 3) time_diff = that.frame_rate;
         var angle_change = 0.3 * time_diff * Math.PI * Math.min(24000 + threadid - time, 6000) / 6000;
         if (angle_change < 0) this.running = false;
-        for (var i in this.dices) {
+        for (let i in this.dices) {
             this.dices[i].rotation.y += angle_change;
             this.dices[i].rotation.x += angle_change / 4;
             this.dices[i].rotation.z += angle_change / 10;
         }
         this.last_time = time;
         this.renderer.render(this.scene, this.camera);
-        if (this.running == threadid) {
+        if (this.running === threadid) {
             (function(t, tid) {
                 requestAnimationFrame(function() { t.__selector_animate(tid); });
             })(this, threadid);
@@ -707,7 +708,7 @@ export default (function(dice) {
 
     this.dice_box.prototype.search_dice_by_mouse = function(ev) {
         var m = $t.get_mouse_coords(ev);
-        var intersects = (new THREE.Raycaster(this.camera.position, 
+        let intersects = (new THREE.Raycaster(this.camera.position,
                     (new THREE.Vector3((m.x - this.cw) / this.aspect,
                                        (m.y - this.ch) / this.aspect, this.w / 9))
                     .sub(this.camera.position).normalize())).intersectObjects(this.dices);
@@ -717,7 +718,7 @@ export default (function(dice) {
     this.dice_box.prototype.draw_selector = function() {
         this.clear();
         var step = this.w / 4.5;
-        this.pane = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 6, this.h * 6, 1, 1), 
+        this.pane = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 6, this.h * 6, 1, 1),
                 new THREE.MeshPhongMaterial(that.selector_back_colors));
         this.pane.receiveShadow = true;
         this.pane.position.set(0, 0, 1);
@@ -725,7 +726,7 @@ export default (function(dice) {
 
         var mouse_captured = false;
 
-        for (var i = 0, pos = 0; i < that.known_types.length; ++i, ++pos) {
+        for (let i = 0, pos = 0; i < that.known_types.length; ++i, ++pos) {
             var dice = $t.dice['create_' + that.known_types[i]]();
             dice.position.set(pos * step, 0, step * 0.5);
             dice.castShadow = true;
@@ -753,7 +754,7 @@ export default (function(dice) {
         }
         vector.x /= dist; vector.y /= dist;
         var notation = notation_getter.call(box);
-        if (notation.set.length == 0) return;
+        if (notation.set.length === 0) return;
         var vectors = box.generate_vectors(notation, vector, boost);
         box.rolling = true;
         if (before_roll) before_roll.call(box, vectors, notation, roll);
@@ -769,7 +770,7 @@ export default (function(dice) {
         });
         $t.bind(container, ['mouseup', 'touchend'], function(ev) {
             if (box.rolling) return;
-            if (box.mouse_start == undefined) return;
+            if (box.mouse_start === undefined) return;
             ev.stopPropagation();
             var m = $t.get_mouse_coords(ev);
             var vector = { x: m.x - box.mouse_start.x, y: -(m.y - box.mouse_start.y) };

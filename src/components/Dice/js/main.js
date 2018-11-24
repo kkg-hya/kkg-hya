@@ -1,4 +1,4 @@
-import {teal, $t} from './teal';
+import { $t } from './teal';
 
 export default function dice_initialize(container, resultCall) {
     $t.remove($t.id('loading_text'));
@@ -62,7 +62,7 @@ export default function dice_initialize(container, resultCall) {
     function after_roll(notation, result) {
         var res = result.join(' ');
         if (notation.constant) res += ' +' + notation.constant;
-        if (result.length > 1) res += ' = ' + 
+        if (result.length > 1) res += ' = ' +
                 (result.reduce(function(s, a) { return s + a; }) + notation.constant);
         label.innerHTML = res;
         info_div.style.display = 'inline-block';
@@ -76,13 +76,13 @@ export default function dice_initialize(container, resultCall) {
 
     $t.bind(container, ['mouseup'], function(ev) {
         ev.stopPropagation();
-        if (selector_div.style.display == 'none') {
+        if (selector_div.style.display === 'none') {
             if (!box.rolling) show_selector();
             box.rolling = false;
             return;
         }
         var name = box.search_dice_by_mouse(ev);
-        if (name != undefined) {
+        if (name !==  undefined) {
             var notation = $t.dice.parse_notation(set.value);
             notation.set.push(name);
             set.value = $t.dice.stringify_notation(notation);

@@ -39,7 +39,7 @@
     {
       "title": 0,
       "description": "Если у соперников ${wear} ${color} цвета то вы получаете в очко",
-      "forMe": false,
+      "forMe": true,
       "forEnemy": false,
       "forRandom": false,
       "isForComand": false,
@@ -61,7 +61,7 @@
       "forEnemy": false,
       "forRandom": false,
       "isForComand": false,
-      "pic": 0
+      "pic": "https://cs.pikabu.ru/images/big_size_comm/2014-02_2/13917927201650.jpg"
     },
     {
       "title": "Ты НИКАКОЙ как все",
@@ -116,6 +116,15 @@
       "forRandom": false,
       "isForComand": true,
       "pic": 0
+    },
+    {
+      "title": "Размер иммеет значение",
+      "description": "Очко получит команда с самым длинным пальцем",
+      "forMe": false,
+      "forEnemy": false,
+      "forRandom": false,
+      "isForComand": true,
+      "pic": "https://media.giphy.com/media/dPENqDMcs0Uqk/giphy.gif"
     }
   ],
   "tasks": [

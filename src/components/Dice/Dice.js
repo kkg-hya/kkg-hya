@@ -2,11 +2,13 @@ import React from "react";
 import main from "./js/main";
 
 // Don't delete useles import. Without it don't work
+/* eslint-disable */
 import three from "three";
 import cannon from "cannon";
 import * as dice from "./js/dice";
 import teal from "./js/teal";
 import "./Dice.scss";
+/* eslint-enable */
 
 class Dice extends React.Component {
 
