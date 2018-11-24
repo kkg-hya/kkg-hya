@@ -6,23 +6,7 @@ import three from "three";
 import cannon from "cannon";
 import * as dice from "./js/dice";
 import teal from "./js/teal";
-
-import "./styles/dice.css";
-import "./styles/main.css";
 import "./Dice.scss";
-
-
-const display = {
-    display: 'none'
-};
-
-const marginLeft = {
-    marginLeft: '0.6em'
-};
-
-const zeroMargin = {
-    margin: '0'
-};
 
 class Dice extends React.Component {
 
@@ -32,11 +16,11 @@ class Dice extends React.Component {
 
     render(props) {
         return (
-            <div id="DiceContainer" style={zeroMargin} >
+            <div id="DiceContainer" className="zeroMargin" >
                 <div className="control_panel">
                   <p id="loading_text">Loading libraries, please wait a bit...</p>
               </div>
-                <div id="info_div" style={display}>
+                <div id="info_div" className="innerDisplay">
                   <div className="center_field">
                       <span id="label"></span>
                   </div>
@@ -46,7 +30,7 @@ class Dice extends React.Component {
                       </div>
                   </div>
               </div>
-              <div id="selector_div" style={display}>
+              <div id="selector_div" className="innerDisplay">
                   <div className="center_field">
                       <div id="sethelp">
                           choose your dice set by clicking the dices or by direct input of notation,<br/>
@@ -56,7 +40,7 @@ class Dice extends React.Component {
                   <div className="center_field">
                       <input type="text" id="set" value="1d6"></input><br/>
                       <button id="clear">clear</button>
-                      <button style={marginLeft} id="throw">throw</button>
+                      <button className="marginLeft" id="throw">throw</button>
                   </div>
               </div>
               <div id="canvas"></div>

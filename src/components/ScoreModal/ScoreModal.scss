@@ -11,7 +11,7 @@
   font-size: 14rem;
   text-align: center;
   transform: translateX(+110%);
-  transition: transform 0.5s ease-in;
+  transition: transform 0.3s ease-in;
 
   &--animate-in {
     transform: translateX(0%);

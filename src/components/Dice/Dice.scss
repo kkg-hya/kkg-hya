@@ -1,12 +1,152 @@
-.center_field {
-  visibility: hidden;
-}
+body {
+  font-family: Georgia;
 
-#DiceContainer {
-  position: fixed;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  background: #fff;
+  a {
+    color: gray;
+  }
+  
+  em {
+    border: 1px rgba(0, 0, 0, 0.2) solid;
+    font-style: normal;
+    padding: 0px 3px;
+    background-color: rgba(0, 0, 0, 0.08);
+    border-radius: 3px;
+  }
+
+  h6 {
+    font-size: 100%;
+    font-weight: normal;
+    margin: 0px;
+  }
+  
+  p {
+    font-size: 80%;
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+
+  .center {
+    &_field {
+      visibility: hidden;
+      position: absolute;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+
+      * {
+        position: relative;
+        font-family: Trebuchet MS;
+        background-color: rgba(255, 255, 255, 0.6);
+        padding: 5px 15px;
+      }
+
+      br{
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+  }
+  
+  .bottom {
+    &_field {
+      position: absolute;
+      text-align: center;
+      bottom: 5px;
+      width: inherit;
+      padding: 0px;
+    }
+  }
+    
+  .dice {
+    &_place {
+      position: absolute;
+      border: solid black 1px;
+    }
+  }
+
+  .control {
+    &_panel{
+      padding: 15px;
+      padding-bottom: 0px;
+      position: absolute;
+      z-index: 10;
+    }
+  }
+
+  .innerDisplay {
+    display: none;
+  }
+
+  .marginLeft {
+    margin-left: 0.6em;
+  }
+
+  .zeroMargin {
+    margin: 0
+  }
+
+  #label {
+    font-size: 32pt;
+    word-spacing: 0.5em;
+    padding: 5px 15px;
+    color: rgba(21, 26, 26, 0.6);
+    top: 45%;
+  }
+  
+  #labelhelp {
+    font-size: 12pt;
+    padding: 5px 15px;
+    color: rgba(21, 26, 26, 0.5);
+    bottom: 50px;
+  }
+  
+  #set {
+    text-align: center;
+    font-size: 26pt;
+    border: none;
+    color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 255, 255, 0);
+    top: 60%;
+  }
+  
+  #sethelp {
+    font-size: 12pt;
+    color: rgba(21, 26, 26, 0.5);
+    background: none;
+    top: 25%;
+  }
+  
+  #selector_div button {
+    font-size: 20pt;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    border: none;
+    width: 5em;
+    top: 62%;
+  }
+  
+  #svg *, .noselect * {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  #waitform {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    cursor: wait;
+  }
+
+  #DiceContainer {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: #fff;
+  }
 }
