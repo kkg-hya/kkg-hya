@@ -6,6 +6,7 @@ import Dice from "./components/Dice/Dice";
 import ScoreModal from "./components/ScoreModal/ScoreModal";
 import Modal from './components/Modal/Modal';
 import reachDescription from './generator/decriptionGenerator';
+import NewTaskForm from "./components/NewTaskForm/NewTaskForm";
 
 import { debounce } from "lodash";
 import { tasks, questions } from './mock';
@@ -235,7 +236,7 @@ class App extends React.PureComponent {
 
     return (
       <div className="app">
-        <Score scoreA={scoreA} scoreB={scoreB} isTeamA={isTeamA} />
+        {/* <Score scoreA={scoreA} scoreB={scoreB} isTeamA={isTeamA} />
         <Card
           title={title}
           description={reachDescription(description)}
@@ -251,7 +252,8 @@ class App extends React.PureComponent {
           isOut={isOut}
         />
         { showDice && <Dice resultCall={this.resultCall} /> }
-        { (showDice || gameEnded) && <Modal showDice={showDice} gameEnded={gameEnded} isTeamAWin={isTeamAWin} isTeamA={isTeamA} /> }
+        { (showDice || gameEnded) && <Modal showDice={showDice} gameEnded={gameEnded} isTeamAWin={isTeamAWin} isTeamA={isTeamA} /> } */}
+        <NewTaskForm />
       </div>
     );
   }

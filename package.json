@@ -7,6 +7,7 @@
   "dependencies": {
     "cannon": "0.5.0",
     "classnames": "2.2.6",
+    "dexie": "^2.0.4",
     "lodash": "4.17.11",
     "node-sass": "^4.11.0",
     "react": "16.5.2",
