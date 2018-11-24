@@ -27,7 +27,7 @@ const zeroMargin = {
 class Dice extends React.Component {
 
     componentDidMount() {
-        main(document.body, this.props.resultCall);
+        main(document.getElementById('DiceContainer'), this.props.resultCall);
     }
 
     render(props) {
