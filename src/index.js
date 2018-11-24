@@ -247,7 +247,7 @@ class App extends React.PureComponent {
           isOut={isOut}
         />
         { showDice && <Dice resultCall={this.resultCall} /> }
-        <Modal showDice={showDice} gameEnded={gameEnded} isTeamAWin={isTeamAWin} isTeamA={isTeamA} />
+        { (showDice || gameEnded) && <Modal showDice={showDice} gameEnded={gameEnded} isTeamAWin={isTeamAWin} isTeamA={isTeamA} /> }
       </div>
     );
   }
