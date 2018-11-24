@@ -1,15 +1,320 @@
 {
-  "tasks": [
-  ],
   "questions": [
     {
       "title": "Солнце светит негры пашут",
-      "description": "Получите очко если сейчас темное время суток, а в вашей команде у всех темные волосы (не рыжие и не блондины), для светлого времени суток наоборот",
-      "forMe": 1,
-      "forEnemy": 0,
-      "forRandom": 0,
-      "isForComand": 0,
-      "pic": "https://ukranews.com/uploads/news/2013/12/05/17/7b4ebab118c661c62bc395cf784ca9f53b5bf158.jpg"
+      "description": "Получите очко если сейчас темное время суток, а в вашей команде у всех темные волосы (не рыжие и не блондины),  для светлого времени суток наоборот",
+      "forMe": "TRUE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "Зуб за зуб",
+      "description": "если на прошлом ходу команда противника получила очко,  ваша получает очко",
+      "forMe": "TRUE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "Залепи себе пукан",
+      "description": "Если под ведущим есть стул и под ним жевачка то соперник  получает очко",
+      "forMe": "FALSE",
+      "forEnemy": "TRUE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "Если в комнате {thing} {color} цвета то получите очко",
+      "forMe": "TRUE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "Если у соперников {wear} {color} цвета то вы получаете в очко",
+      "forMe": "TRUE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "Нет, не ты",
+      "description": "Если в вашей команде есть люди с одинаковыми именами - получи бал",
+      "forMe": "TRUE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "Молодое поколение выбирает",
+      "description": "Если в вашей команде есть тот самый батька получите +30 очков",
+      "forMe": "TRUE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "Ты НИКАКОЙ как все",
+      "description": "Ваша команда получает бал если хотябы один член команды Имеет дреды,  не имеет волос на голове вообще, или носит эрокез",
+      "forMe": "TRUE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "50 оттенков серого",
+      "description": "Получите бал если у кого-то из команды носки разного цвета",
+      "forMe": "TRUE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "Apple для пидоров",
+      "description": "В Очко получает команда у которой больше техники марки apple",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "TRUE",
+      "pic": ""
+    },
+    {
+      "title": "\"превед медвед\"",
+      "description": "Очко получает команда со самым старым игроком",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "TRUE",
+      "pic": ""
+    },
+    {
+      "title": "Новая школа",
+      "description": "очко команде с самым младшим игроком",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "TRUE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "У кого больше техники сяоми получает очко",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "TRUE",
+      "pic": ""
+    },
+    {
+      "title": "Деньги не проблема",
+      "description": "Запустите самолётик из купюры",
+      "forMe": "TRUE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "forMe": "FALSE",
+      "forEnemy": "FALSE",
+      "forRandom": "FALSE",
+      "isForComand": "FALSE",
+      "pic": ""
     }
-  ]
+  ],
+  "tasks": []
 }

@@ -5,6 +5,7 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "cannon": "0.5.0",
     "classnames": "2.2.6",
     "lodash": "4.17.11",
     "node-sass": "^4.10.0",
@@ -13,7 +14,8 @@
     "react-redux": "latest",
     "react-scripts": "2.0.3",
     "redux": "4.0.1",
-    "redux-actions": "2.6.4"
+    "redux-actions": "2.6.4",
+    "three": "^0.98.0"
   },
   "devDependencies": {},
   "scripts": {
