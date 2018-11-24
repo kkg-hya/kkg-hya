@@ -1,6 +1,6 @@
 import {teal, $t} from './teal';
 
-export default function dice_initialize(container) {
+export default function dice_initialize(container, resultCall) {
     $t.remove($t.id('loading_text'));
 
     var canvas = $t.id('canvas');
@@ -64,7 +64,10 @@ export default function dice_initialize(container) {
         info_div.style.display = 'inline-block';
     }
 
-    box.bind_mouse(container, notation_getter, before_roll, after_roll);
+    box.bind_mouse(container, notation_getter, before_roll, (...args) => {
+        resultCall(args);
+        after_roll(...args);
+    });
     box.bind_throw($t.id('throw'), notation_getter, before_roll, after_roll);
 
     $t.bind(container, ['mouseup'], function(ev) {

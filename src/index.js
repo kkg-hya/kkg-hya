@@ -2,7 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Score from "./components/Score/Score";
 import Card from "./components/Card/Card";
+import Dice from "./components/Dice/Dice";
 import ScoreModal from "./components/ScoreModal/ScoreModal";
+import Modal from './components/Modal/Modal';
 import reachDescription from './generator/decriptionGenerator';
 
 import { debounce } from "lodash";
@@ -43,6 +45,9 @@ class App extends React.PureComponent {
     isTeamA: true,
     isTeamAGetScore: true,
     mode: 'me',
+    gameEnded: false,
+    isTeamAWin: false,
+    showDice: true,
   };
 
   showResult = debounce(isFirstButton => {
@@ -53,11 +58,25 @@ class App extends React.PureComponent {
 
           this.changeTeam();
           this.generateQuestion();
-          this.setState({ isIn: false, isOut: !isIn && !isOut });
+          this.setState({ isIn: false, isOut: !isIn && !isOut }, () => {
+            this.showDices();
+          });
         }, 1200);
       });
     });
   }, 500);
+
+  showDices = () => {
+    this.setState({
+      showDice: true,
+    })
+  }
+
+  hideDices = () => {
+    this.setState({
+      showDice: false,
+    })
+  }
 
   changeTeam = () => {
     this.setState(({
@@ -68,7 +87,7 @@ class App extends React.PureComponent {
   }
 
   checkResult = (isFirstButton, cb = emptyFunc) => {
-    const { mode } = this.state;
+    const { mode, scoreA, scoreB } = this.state;
     switch (mode) {
       case 'me':
         this.setState({ count: 0 }, () => {
@@ -92,25 +111,50 @@ class App extends React.PureComponent {
         });
         break;
     }
+    if (scoreA >= 30 || scoreB >= 30) {
+      this.endGame();
+    }
+  }
+
+  endGame = () => {
+    this.setState(({ scoreA, scoreB }) => ({
+      gameEnded: true,
+      isTeamAWin: scoreA < scoreB,
+    }));
   }
 
   generateQuestion = (isTask) => {
+    const { tasks, indexTask, indexQuestion, questions } = this.state;
+
+    if (!tasks[indexTask+1] && !questions[indexQuestion+1]) {
+      this.endGame();
+      return;
+    }
+
     if (isTask) {
-      const newIndex = this.state.indexTask + 1;
+      const newIndex = indexTask + 1;
 
-      const task = this.state.tasks[newIndex];
-      this.setState({
-        indexTask: newIndex,
-        mode: getModeOfCard(task),
-      })
+      const task = tasks[newIndex];
+      if (task) {
+        this.setState({
+          indexTask: newIndex,
+          mode: getModeOfCard(task),
+        })
+      } else {
+        this.generateQuestion(false);
+      }
     } else {
-      const newIndex = this.state.indexQuestion + 1;
+      const newIndex = indexQuestion + 1;
 
-      const task = this.state.questions[newIndex];
-      this.setState({
-        indexQuestion: newIndex,
-        mode: getModeOfCard(task),
-      })
+      const task = questions[newIndex];
+      if (task) {
+        this.setState({
+          indexQuestion: newIndex,
+          mode: getModeOfCard(task),
+        })
+      } else {
+
+      }
     }
   }
 
@@ -154,6 +198,13 @@ class App extends React.PureComponent {
     }
   }
 
+  resultCall = (value) => {
+    this.generateQuestion(value[1][0] > 4);
+    setTimeout(() => {
+      this.hideDices();
+    }, 400);
+  }
+
 
   render() {
     const {
@@ -170,6 +221,9 @@ class App extends React.PureComponent {
       isTeamAGetScore,
       mode,
       count,
+      showDice,
+      gameEnded,
+      isTeamAWin,
     } = this.state;
 
     const card = (isTask ? tasks[indexTask] : questions[indexQuestion]) || {};
@@ -192,6 +246,8 @@ class App extends React.PureComponent {
           isIn={isIn}
           isOut={isOut}
         />
+        { showDice && <Dice resultCall={this.resultCall} /> }
+        <Modal showDice={showDice} gameEnded={gameEnded} isTeamAWin={isTeamAWin} isTeamA={isTeamA} />
       </div>
     );
   }

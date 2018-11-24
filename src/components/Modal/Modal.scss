@@ -1,0 +1,21 @@
+.modal {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  box-sizing: border-box;
+  padding-top: 2rem;
+  font-size: 2rem;
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  
+  &--blue {
+    color: #9f86ff;
+  }
+
+  &--red {
+    color: #e64759;
+  }
+}

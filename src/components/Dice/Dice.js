@@ -1,11 +1,16 @@
 import React from "react";
+import main from "./js/main";
+
+// Don't delete useles import. Without it don't work
 import three from "three";
 import cannon from "cannon";
 import * as dice from "./js/dice";
-import main from "./js/main";
 import teal from "./js/teal";
+
 import "./styles/dice.css";
 import "./styles/main.css";
+import "./Dice.scss";
+
 
 const display = {
     display: 'none'
@@ -22,7 +27,7 @@ const zeroMargin = {
 class Dice extends React.Component {
 
     componentDidMount() {
-        main(document.body);
+        main(document.body, this.props.resultCall);
     }
 
     render(props) {
@@ -49,7 +54,7 @@ class Dice extends React.Component {
                       </div>
                   </div>
                   <div className="center_field">
-                      <input type="text" id="set" value="4d6"></input><br/>
+                      <input type="text" id="set" value="1d6"></input><br/>
                       <button id="clear">clear</button>
                       <button style={marginLeft} id="throw">throw</button>
                   </div>
