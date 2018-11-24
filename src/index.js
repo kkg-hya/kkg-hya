@@ -28,6 +28,8 @@ const getModeOfCard = ({ forMe, forEnemy, forRandom, isForComand }) => {
   return '';
 }
 
+const gameScore = 10;
+
 const emptyFunc = () => {};
 
 class App extends React.PureComponent {
@@ -51,7 +53,7 @@ class App extends React.PureComponent {
   };
 
   showResult = debounce(isFirstButton => {
-    const { isIn, isOut } = this.state;
+    const { isIn, isOut, gameEnded } = this.state;
     this.checkResult(isFirstButton, () => {
       this.setState({ isIn: true, isOut: false }, () => {
         setTimeout(() => {
@@ -59,7 +61,9 @@ class App extends React.PureComponent {
           this.changeTeam();
           this.generateQuestion();
           this.setState({ isIn: false, isOut: !isIn && !isOut }, () => {
-            this.showDices();
+            if (!gameEnded) {
+              this.showDices();
+            }
           });
         }, 1200);
       });
@@ -111,7 +115,7 @@ class App extends React.PureComponent {
         });
         break;
     }
-    if (scoreA >= 30 || scoreB >= 30) {
+    if (scoreA >= gameScore || scoreB >= gameScore) {
       this.endGame();
     }
   }
@@ -119,7 +123,7 @@ class App extends React.PureComponent {
   endGame = () => {
     this.setState(({ scoreA, scoreB }) => ({
       gameEnded: true,
-      isTeamAWin: scoreA < scoreB,
+      isTeamAWin: scoreA > scoreB,
     }));
   }
 
